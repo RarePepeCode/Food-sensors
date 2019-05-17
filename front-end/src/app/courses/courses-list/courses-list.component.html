@@ -1,3 +1,12 @@
-<p>
-  courses-list works!
-</p>
+<div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-success">New 1</button>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="cos-xs-12">
+        <app-course-item *ngFor="let courseElem of courses" [course]="courseElem" (courseSelected)="OnCourseSelected(courseElem)"></app-course-item>
+    </div>
+  </div>
+  
