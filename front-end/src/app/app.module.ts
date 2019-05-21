@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes} from '@angular/router';
-
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipesListComponent } from './recipes/recipes-list/recipes-list.component';
 import { RecipesCreationComponent } from './recipes/recipes-creation/recipes-creation.component';
@@ -28,6 +28,7 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
+    RecipesComponent,
     RecipesComponent,
     RecipesListComponent,
     RecipesCreationComponent,
