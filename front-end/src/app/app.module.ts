@@ -17,7 +17,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { CourseItemComponent } from './courses/courses-list/course-item/course-item.component';
 
 const appRoutes: Routes = [
-  { path: 'courses/courses-list', component: CoursesListComponent },
+  { path: 'courses', component: CoursesListComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'admin', component: AdminComponent },
   { path:  'main-page', component: MainPageComponent},

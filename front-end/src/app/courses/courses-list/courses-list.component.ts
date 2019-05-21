@@ -15,14 +15,18 @@ export class CoursesListComponent implements OnInit {
 
 
 
-  courses: Course[] = []
+  courses: Course[] =   [
+    new Course(1, 'name1', 'disc1', true), 
+    new Course(2, 'name2', 'disc2', true), 
+    new Course(3, 'name3', 'disc3', true)
+  ]
 
 
 
-  constructor(private http: HttpClient, private restService : CourseServiceService) { }
+  constructor(private restService : CourseServiceService) { }
 
   ngOnInit() {
-    this.getDataChartData();
+    //this.getDataChartData();
   }
 
   OnCourseSelected(course: Course) {
@@ -35,7 +39,6 @@ export class CoursesListComponent implements OnInit {
       .subscribe(
       data => {
         this.courses = data;
-        var i = 0;
       },
       err => {
         console.log(err);
