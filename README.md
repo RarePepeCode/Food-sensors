@@ -11,9 +11,9 @@
 6. profit
 
 #Steps for setting up JAVA Rest server
-1. Have JAVA 11
-2. Set JAVA_HOME at jdk_11.*.* folder in system environments variables
-3. Install Apache Maven 3.6.0 or higher
+1. Set JAVA_HOME at jdk_11.*.* folder in system environments variables
+2. Install Apache Maven 3.6.0 or higher
+3. Import mvn project with Intellj selecting \Food-sensors\rest-service\pom.xml
 4. Open console terminal at \Food-sensors\rest-service
 5. Enter command (mvn rest-boot:run) to lauch server
 6. Open loaclhost:8081/greeting for example of a rest service
