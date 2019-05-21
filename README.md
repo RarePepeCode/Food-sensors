@@ -23,4 +23,5 @@
  -Create postgreSQL database and connect it to JAVA rest service. 
  Config Food-sensors\rest-service/pom.xml and C:\Food-sensors\rest-service/src/main/resources/application.properties 
  for rest server to work with database (you can change postgreSQL version or even thw whole database.
+ 
  -Create API for front-end with back-end use courses.service as example
