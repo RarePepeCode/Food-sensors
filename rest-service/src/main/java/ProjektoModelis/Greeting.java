@@ -1,4 +1,4 @@
-package hello;
+package ProjektoModelis;
 
 public class Greeting {
 

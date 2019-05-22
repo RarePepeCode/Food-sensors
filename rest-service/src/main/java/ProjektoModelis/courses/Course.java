@@ -1,4 +1,4 @@
-package hello.courses;
+package ProjektoModelis.courses;
 
 public class Course {
 

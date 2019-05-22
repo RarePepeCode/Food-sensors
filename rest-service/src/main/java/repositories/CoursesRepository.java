@@ -1,6 +1,6 @@
 package repositories;
 
-import hello.courses.Course;
+import ProjektoModelis.courses.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

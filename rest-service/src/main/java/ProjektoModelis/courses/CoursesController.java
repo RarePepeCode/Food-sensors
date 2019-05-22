@@ -1,4 +1,4 @@
-package hello.courses;
+package ProjektoModelis.courses;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
