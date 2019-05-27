@@ -15,9 +15,11 @@ import { HeaderComponent } from './header/header.component';
 import { AdminComponent } from './admin/admin.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { CourseItemComponent } from './courses/courses-list/course-item/course-item.component';
+import { CoursesMainPageComponent } from './courses/courses-main-page/courses-main-page.component';
+import { CoursePageComponent } from './courses/course-page/course-page.component';
 
 const appRoutes: Routes = [
-  { path: 'courses', component: CoursesListComponent },
+  { path: 'courses', component: CoursesMainPageComponent },
   { path: 'recipes', component: RecipesComponent },
   { path: 'admin', component: AdminComponent },
   { path:  'main-page', component: MainPageComponent},
@@ -39,7 +41,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     AdminComponent,
     MainPageComponent,
-    CourseItemComponent
+    CourseItemComponent,
+    CoursesMainPageComponent,
+    CoursePageComponent
   ],
   imports: [
     BrowserModule,

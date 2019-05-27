@@ -46,3 +46,7 @@ a {
   .nav-bar {
     background-color: lightgray;
   }
+
+  .container {
+    margin-top: 10px;
+  }
