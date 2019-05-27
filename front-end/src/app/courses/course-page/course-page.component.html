@@ -1,3 +1,5 @@
-<p>
-  course-page works!
-</p>
+<div *ngIf="isEditMode" class="name" >
+ <h2>{{course.pavadinimas}}</h2>
+ <p>Aprašymas: {{course.aprasymas}}</p>
+</div>
+

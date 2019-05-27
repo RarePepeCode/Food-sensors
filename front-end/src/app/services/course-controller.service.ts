@@ -15,4 +15,9 @@ export class CourseControllerService {
   searchCourses(): Observable<Array<Course>> {
     return this.http.get<Array<Course>>(courseUrl + 'searchCourses');
   }
+
+  getCourse(id): Observable<Course> {
+    return this.http.get<Course>(courseUrl + 'getCourse/' + id);
+  }
+
 }

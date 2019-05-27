@@ -1,12 +1,1 @@
-<div class="row">
-    <div class="col-md-5">
-      <!--<app-recipes-list (recipeWasSelected)="selectedRecipe = $event"></app-recipes-list> -->
-      <app-courses-list (courseWasSelected)='selectedCourse = $event'></app-courses-list>
-    </div>
-   <!-- <div class="col-md-7">
-      <app-recipes-detail *ngIf="selectedRecipe" else infoText></app-recipes-detail>
-      <ng-template #infoText>
-        <p>Pls select me :(</p>
-      </ng-template>
-    </div> -->
-  </div>
+<app-courses-main-page [isAdminTab]=false></app-courses-main-page>

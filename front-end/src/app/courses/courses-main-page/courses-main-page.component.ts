@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CourseControllerService } from 'src/app/services/course-controller.service';
 import { Course } from 'src/models/course.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-courses-main-page',
@@ -9,15 +10,25 @@ import { Course } from 'src/models/course.model';
 })
 export class CoursesMainPageComponent implements OnInit {
   courses: Array<Course>;
+  
 
-  constructor(private courseController: CourseControllerService) { }
+  @Input() isAdminTab : boolean
+  @Output() openCourse = new EventEmitter<number>();
 
-  ngOnInit() {
+  constructor(private courseController: CourseControllerService, private router: Router) {}
+
+  ngOnInit() {  
     this.courseController.searchCourses()
       .subscribe((courses) => {
         this.courses = courses;
       }
     );
+  
+  this.courses = new Array(new Course(1, "a", 10, "c"));
   }
+
+  selectCourse(id){
+    this.router.navigate(['course', id, this.isAdminTab]);
+  }    
 
 }
