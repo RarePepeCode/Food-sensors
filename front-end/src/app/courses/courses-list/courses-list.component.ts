@@ -16,9 +16,9 @@ export class CoursesListComponent implements OnInit {
 
 
   courses: Course[] =   [
-    new Course(1, 'name1', 'disc1', true), 
-    new Course(2, 'name2', 'disc2', true), 
-    new Course(3, 'name3', 'disc3', true)
+    // new Course(1, 'name1', 'disc1', true), 
+    // new Course(2, 'name2', 'disc2', true), 
+    // new Course(3, 'name3', 'disc3', true)
   ]
 
 
@@ -34,14 +34,14 @@ export class CoursesListComponent implements OnInit {
   }
 
   getDataChartData() {
-    console.log("XD")
+    //console.log("XD")
     this.restService.getAllCourses()
       .subscribe(
       data => {
         this.courses = data;
       },
       err => {
-        console.log(err);
+        //console.log(err);
       }
     );
   }

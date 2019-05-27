@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CourseControllerService } from 'src/app/services/course-controller.service';
+import { Course } from 'src/models/course.model';
 
 @Component({
   selector: 'app-courses-main-page',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses-main-page.component.css']
 })
 export class CoursesMainPageComponent implements OnInit {
+  courses: Array<Course>;
 
-  constructor() { }
+  constructor(private courseController: CourseControllerService) { }
 
   ngOnInit() {
+    this.courseController.searchCourses()
+      .subscribe((courses) => {
+        this.courses = courses;
+      }
+    );
   }
 
 }

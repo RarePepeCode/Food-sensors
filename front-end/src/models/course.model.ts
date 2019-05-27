@@ -1,15 +1,15 @@
 export class Course {
 
-    public id: any
-    public name: string
-    public discription: string;
-    public approved: boolean
+    public id: number;
+    public pavadinimas: string;
+    public ivertinimas: number;
+    public aprasymas: string;
 
-    constructor(id: any, name: string, desc: string, aprroved: boolean){
+    constructor(id: number, pavadinimas: string, ivertinimas: number, aprasymas: string){
         this.id = id;
-        this.name = name;
-        this.discription = desc;
-        this.approved = aprroved;
+        this.pavadinimas = pavadinimas;
+        this.ivertinimas = ivertinimas;
+        this.aprasymas = aprasymas;
     }
     
 }

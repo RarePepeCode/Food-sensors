@@ -13,11 +13,16 @@ import ProjektoModelis.View.Main.CourseExercisePage;
 import ProjektoModelis.Models.Course;
 import ProjektoModelis.View.Administrator.CreateCourse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/courses")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CourseController
 {
 	private CreateCourse createCourse;
@@ -87,10 +92,11 @@ public class CourseController
 	{
 		
 	}
-	
-	public void searchCourses( )
+
+	@RequestMapping(value = "/searchCourses", method = RequestMethod.GET)
+	public List<Course> searchCourses( )
 	{
-		
+		return this.courseRepository.findAll();
 	}
 	
 	public void deleteCourse( )
