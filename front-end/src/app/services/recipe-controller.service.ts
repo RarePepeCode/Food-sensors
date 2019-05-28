@@ -15,4 +15,8 @@ export class RecipeControllerService {
   searchRecipes(pavadinimas: string, aprasymas: string): Observable<Array<Recipe>> {
     return this.http.get<Array<Recipe>>(recipeUrl + 'searchRecipes?pavadinimas=' + pavadinimas + '&aprasymas=' + aprasymas);
   }
+
+  getRecipe(id: number): Observable<Recipe> {
+    return this.http.get<Recipe>(recipeUrl + 'getRecipe/' + id);
+  }
 }

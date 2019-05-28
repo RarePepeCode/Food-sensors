@@ -7,11 +7,11 @@ package ProjektoModelis.Controllers;
 import ProjektoModelis.Models.Comment;
 import ProjektoModelis.Repositories.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/comments")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CommentController
 {
 	private Comment comment;
@@ -19,9 +19,12 @@ public class CommentController
 	@Autowired
 	private CommentRepository commentRepository;
 
-	public void comment( )
-	{
+	@ResponseBody
+	@RequestMapping(value = "/comment", method = RequestMethod.POST)
+	public int comment(@RequestBody Comment comment) {
+		Comment savedComment = commentRepository.save(comment);
 
+		return savedComment.getId();
 	}
 	
 	public void rate( )
