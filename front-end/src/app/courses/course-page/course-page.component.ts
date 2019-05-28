@@ -12,7 +12,7 @@ export class CoursePageComponent implements OnInit {
 
   course : Course
   courseID : number;
-  isEditMode : boolean
+  isEditMode : boolean = false;
 
 
   constructor(private courseController: CourseControllerService, private route: ActivatedRoute) { }
@@ -27,7 +27,7 @@ export class CoursePageComponent implements OnInit {
         this.course = course;
       }
     );
-    console.log(this.isEditMode)
+    console.log(this.isEditMode);
     this.course = new Course(1, "Pavadinimas", 10, "ilgas aprasymas");
   }
 

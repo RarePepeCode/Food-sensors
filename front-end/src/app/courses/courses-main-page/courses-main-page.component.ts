@@ -24,7 +24,7 @@ export class CoursesMainPageComponent implements OnInit {
       }
     );
   
-  this.courses = new Array(new Course(1, "a", 10, "c"));
+  this.courses = new Array(new Course(1, "a", 10, "c"),new Course(2, "TUXA MLDC", 3, "TUXA MLDC") );
   }
 
   selectCourse(id){

@@ -1,5 +1,11 @@
-<div *ngIf="isEditMode" class="name" >
+<div *ngIf="isEditMode === 'true'" class="name" >
  <h2>{{course.pavadinimas}}</h2>
  <p>Aprašymas: {{course.aprasymas}}</p>
 </div>
 
+<div *ngIf="isEditMode === 'false'" class="name" >
+    <h2>{{course.pavadinimas}}</h2>
+    <p>Aprašymas: {{course.aprasymas}}</p>
+   </div>
+   
+   
