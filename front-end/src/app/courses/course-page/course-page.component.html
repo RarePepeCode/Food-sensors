@@ -1,13 +1,13 @@
 <div *ngIf="isEditMode === 'true'" class="name">
   <form>
     <div class="col-sm-8">
-      <h2>Kurso Redagavimas</h2>
+      <h2>Kurso Redagavimo Forma</h2>
       <hr>
     </div>
     <div class="row">
       <div class="col-sm-4">
         <div class="form-group">
-          <label for="name">Kurso pavadinimas</label>
+          <label for="name">Kurso Pavadinimas</label>
           <input type="text" class="form-control" id="name" [(ngModel)] ="course.pavadinimas" name="name" required>
         </div>
       </div>
@@ -29,7 +29,7 @@
     </div>
     <div class="row">
       <div class="col-sm-3">
-        <button type="button" class="btn btn-outline-success" (click)="submitCourse()">Saugoti</button>
+        <button type="button" class="btn btn-outline-success" (click)="submitCourse()">Atnaujinti duomenis</button>
       </div>
       <div class="col-sm-3">
         <button type="button" class="btn btn-outline-danger" (click)="deleteCourse()">Trinti</button>

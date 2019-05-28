@@ -28,5 +28,9 @@ export class CoursesMainPageComponent implements OnInit {
   selectCourse(id){
     this.router.navigate(['course', id, this.isAdminTab]);
   }    
+  
+  openCreateCourse(){
+    this.router.navigate(['create-course']);
+  }
 
 }
