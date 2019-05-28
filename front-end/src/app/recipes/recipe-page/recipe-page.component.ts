@@ -30,7 +30,6 @@ export class RecipePageComponent implements OnInit {
 
       this.recipeController.getRecipe(this.recipeId)
         .subscribe((recipe) => {
-          console.log(recipe);
           this.recipe = recipe;
         }
       );
