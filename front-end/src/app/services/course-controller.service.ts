@@ -17,8 +17,11 @@ export class CourseControllerService {
   }
 
   getCourse(id): Observable<Course> {
-    console.log("XQE " + id)
     return this.http.get<Course>(courseUrl + 'getCourse/' + id);
+  }
+
+  deleteCourse(id): Observable<{}> {
+    return this.http.delete(courseUrl + 'deleteCourse/' + id);
   }
 
 }

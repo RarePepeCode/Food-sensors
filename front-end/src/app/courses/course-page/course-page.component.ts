@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/models/course.model';
 import { CourseControllerService } from 'src/app/services/course-controller.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-page',
@@ -15,7 +16,7 @@ export class CoursePageComponent implements OnInit {
   isEditMode : boolean = false;
 
 
-  constructor(private courseController: CourseControllerService, private route: ActivatedRoute) { }
+  constructor(private courseController: CourseControllerService, private route: ActivatedRoute,  private router: Router) { }
 
   ngOnInit() {     
     this.route.params.subscribe( params => {
@@ -31,5 +32,17 @@ export class CoursePageComponent implements OnInit {
     console.log(this.isEditMode);
     
   }
+
+  deleteCourse(){
+    this.courseController.deleteCourse(this.courseID).subscribe();
+    if (this.isEditMode)
+    {
+      this.router.navigate(['admin']);
+    }
+    else{
+      this.router.navigate(['courses']);
+    }
+
+  }   
 
 }
