@@ -21,7 +21,7 @@ import { CreateCourseComponent } from './courses/create-course/create-course.com
 const appRoutes: Routes = [
   { path: 'courses', component: CoursesComponent },
   { path: 'course/:id/:edit',component: CoursePageComponent},
-  { path: 'create-course',component: CreateCourseComponent},
+  { path: 'create-course/:create',component: CreateCourseComponent},
   { path: 'recipes', component: RecipesMainPageComponent },
   { path: 'recipes-search', component: RecipeSearchPageComponent },
   { path: 'recipe/:id/:edit', component: RecipePageComponent },

@@ -14,6 +14,7 @@ export class CoursesMainPageComponent implements OnInit {
 
   @Input() isAdminTab : boolean
   @Output() openCourse = new EventEmitter<number>();
+  buttonName : string
 
   constructor(private courseController: CourseControllerService, private router: Router) {}
 
@@ -23,6 +24,14 @@ export class CoursesMainPageComponent implements OnInit {
         this.courses = courses;
       }
     );
+    if (this.isAdminTab)
+    {
+      this.buttonName = "Kurti Kursą";
+    }
+    else
+    {
+      this.buttonName = "Siūlyti Kursą";
+    }
   }
 
   selectCourse(id){
@@ -30,7 +39,7 @@ export class CoursesMainPageComponent implements OnInit {
   }    
   
   openCreateCourse(){
-    this.router.navigate(['create-course']);
+    this.router.navigate(['create-course', this.isAdminTab]);
   }
 
 }

@@ -29,7 +29,7 @@ export class CoursePageComponent implements OnInit {
         this.course = course;
       }
     );
-    console.log(this.isEditMode);
+
     
   }
 
