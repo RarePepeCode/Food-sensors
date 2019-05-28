@@ -3,7 +3,7 @@
 #Steps for setting up Angular project
 1. Install node.js (v10.15.3, others should work, but you never know)
 2. Enter fallowing commands in Visual Studio Code terminal at /Food-sensors/front-end directory:
-  (nmp install @angular/cli@7.3.9) (press Enter to all an questions) 
+  (npm install -g @angular/cli@7.3.9) (press Enter to all an questions) 
    and (npm install) (yes, they are seperate commands)
 3. Luach server with command ng serve
 4. Open web application with loaclhost:4200
@@ -15,8 +15,8 @@
 2. Install Apache Maven 3.6.0 or higher
 3. Import mvn project with Intellj selecting \Food-sensors\rest-service\pom.xml
 4. Open console terminal at \Food-sensors\rest-service
-5. Enter command (mvn rest-boot:run) to lauch server
-6. Open loaclhost:8081/greeting for example of a rest service
+5. Enter command (mvn spring-boot:run) to lauch server
+6. Open loaclhost:8080/greeting for example of a rest service
 7. Rest
 
 #Tasks
