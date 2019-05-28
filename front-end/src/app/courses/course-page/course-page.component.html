@@ -8,13 +8,13 @@
       <div class="col-sm-4">
         <div class="form-group">
           <label for="name">Kurso pavadinimas</label>
-          <input type="text" class="form-control" id="name" value="{{course.pavadinimas}}" required>
+          <input type="text" class="form-control" id="name" [(ngModel)] ="course.pavadinimas" name="name" required>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="form-group">
           <label for="rank">Kurso Įvertinimas</label>
-          <input type="number" class="form-control" id="rank" value="{{course.ivertinimas}}" min="1" max="10" required>
+          <input type="number" class="form-control" id="rank" [(ngModel)] ="course.ivertinimas" name="rank" min="1" max="10" required>
         </div>
       </div>
     </div>
@@ -22,14 +22,14 @@
       <div class="col-sm-8">
         <div class="form-group">
           <label for="discription">Kurso Aprašymas</label>
-          <textarea rows="5" cols="50" class="form-control" id="discription" value="{{course.aprasymas}}"
+          <textarea rows="5" cols="50" class="form-control" id="discription" name="discription" [(ngModel)] ="course.aprasymas"
             required></textarea>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-3">
-        <button type="button" class="btn btn-outline-success" (click)="saveCourse()">Saugoti</button>
+        <button type="button" class="btn btn-outline-success" (click)="submitCourse()">Saugoti</button>
       </div>
       <div class="col-sm-3">
         <button type="button" class="btn btn-outline-danger" (click)="deleteCourse()">Trinti</button>

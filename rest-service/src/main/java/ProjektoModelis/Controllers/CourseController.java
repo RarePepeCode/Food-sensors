@@ -109,6 +109,12 @@ public class CourseController
 		courseRepository.deleteById(id);
 	}
 
+	@RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
+	public void saveCourse(@RequestBody  Course course )
+	{
+		courseRepository.save(course);
+	}
+
 
 	public void deleteCourse( )
 	{

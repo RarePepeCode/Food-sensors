@@ -33,6 +33,11 @@ export class CoursePageComponent implements OnInit {
     
   }
 
+  submitCourse(){
+    console.log("ciga");
+    this.courseController.saveCourse(this.course).subscribe();    
+  }
+
   deleteCourse(){
     this.courseController.deleteCourse(this.courseID).subscribe();
     if (this.isEditMode)
