@@ -21,14 +21,15 @@ export class CoursePageComponent implements OnInit {
     this.route.params.subscribe( params => {
       this.courseID = params['id'],
       this.isEditMode = params['edit']
-      })
+      });
     this.courseController.getCourse(this.courseID)
       .subscribe((course) => {
+        console.log("WE" + course)
         this.course = course;
       }
     );
     console.log(this.isEditMode);
-    this.course = new Course(1, "Pavadinimas", 10, "ilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymas");
+    
   }
 
 }

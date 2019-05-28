@@ -96,7 +96,7 @@ public class CourseController
 		return this.courseRepository.findAll();
 	}
 
-	@RequestMapping(value = "/getCourse/{id", method = RequestMethod.GET)
+	@RequestMapping(value = "/getCourse/{id}", method = RequestMethod.GET)
 	public Course searchCourses(@PathVariable("id") Integer id )
 	{
 		return this.courseRepository.getOne(id);
