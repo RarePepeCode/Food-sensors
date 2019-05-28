@@ -15,4 +15,8 @@ export class CommentControllerService {
   comment(comment: Comment): Observable<number> {
     return this.http.post<number>(commentUrl + 'comment', comment);
   }
+
+  rate(comment: Comment): Observable<number> {
+    return this.http.post<number>(commentUrl + 'rate', comment);
+  }
 }

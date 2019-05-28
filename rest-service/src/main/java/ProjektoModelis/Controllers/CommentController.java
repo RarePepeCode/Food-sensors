@@ -26,10 +26,13 @@ public class CommentController
 
 		return savedComment.getId();
 	}
-	
-	public void rate( )
-	{
-		
+
+	@ResponseBody
+	@RequestMapping(value = "/rate", method = RequestMethod.POST)
+	public int rate(@RequestBody Comment rate) {
+		Comment savedRating = commentRepository.save(rate);
+
+		return savedRating.getId();
 	}
 	
 	

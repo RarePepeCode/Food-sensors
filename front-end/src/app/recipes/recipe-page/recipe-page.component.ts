@@ -16,8 +16,7 @@ export class RecipePageComponent implements OnInit {
   recipeId : number;
   isEditMode : boolean = false;
   komentaroTekstas: string;
-  commentId: number = null;
-  ivertinimas: number = 0;
+  ivertinimas: number = 1;
 
   constructor(private route: ActivatedRoute, 
     private recipeController: RecipeControllerService, 
@@ -37,14 +36,21 @@ export class RecipePageComponent implements OnInit {
   }
 
   comment() {
-    let komentaras = new Comment(this.commentId, this.komentaroTekstas, this.recipe, this.ivertinimas, {id: 1});
+    let komentaras = new Comment(null, this.komentaroTekstas, this.recipe, null, {id: 1});
 
     this.commentController.comment(komentaras).subscribe(
       (id: number) => {
-        this.commentId = id;
         console.log(id);
       }
     );
   }
 
+  rate() {
+    let komentaras = new Comment(null, null, this.recipe, this.ivertinimas, {id: 1});
+    this.commentController.rate(komentaras).subscribe(
+      (id: number) => {
+        console.log(id);
+      }
+    );
+  }
 }
