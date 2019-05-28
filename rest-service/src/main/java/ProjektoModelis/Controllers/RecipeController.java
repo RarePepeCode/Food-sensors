@@ -4,6 +4,7 @@
 
 package ProjektoModelis.Controllers;
 
+import ProjektoModelis.Models.Course;
 import ProjektoModelis.Repositories.RecipeRepository;
 import ProjektoModelis.View.Administrator.CreateRecipe;
 import ProjektoModelis.Models.Recipe;
@@ -64,13 +65,12 @@ public class RecipeController
 	@RequestMapping(value = {"/searchRecipes"}, method = RequestMethod.GET)
 	public List<Recipe> searchRecipes(@RequestParam(value="pavadinimas", required=true) String pavadinimas,
 									  @RequestParam(value="aprasymas", required=true) String aprasymas) {
-
 		return this.recipeRepository.getAllRecipes(pavadinimas, aprasymas);
 	}
-	
-	public void openSelectedRecipe( )
-	{
-		
+
+	@RequestMapping(value = "/getRecipe/{id}", method = RequestMethod.GET)
+	public Optional<Recipe> getRecipe(@PathVariable("id") Integer id) {
+		return this.recipeRepository.findById(id);
 	}
 	
 	public void openRecipeSuggestion( )

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeControllerService } from 'src/app/services/recipe-controller.service';
 import { Recipe } from 'src/models/recipe.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-search-page',
@@ -14,7 +15,7 @@ export class RecipeSearchPageComponent implements OnInit {
   recipes: Array<Recipe>;
   hasRecipes: boolean = false;
 
-  constructor(private recipeController: RecipeControllerService) { }
+  constructor(private recipeController: RecipeControllerService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,6 +28,10 @@ export class RecipeSearchPageComponent implements OnInit {
         this.recipes = recipes;
       }
     );
+  }
+
+  selectRecipe(recipeId: number) {
+    this.router.navigate(['recipe', recipeId, false]);
   }
 
   replaceUndefinedFields() {

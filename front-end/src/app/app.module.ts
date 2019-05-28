@@ -14,7 +14,9 @@ import { CoursesMainPageComponent } from './courses/courses-main-page/courses-ma
 import { CoursePageComponent } from './courses/course-page/course-page.component';
 import { RecipeSearchPageComponent } from './recipes/recipe-search-page/recipe-search-page.component';
 import { RecipesMainPageComponent } from './recipes/recipes-main-page/recipes-main-page.component';
+import { RecipePageComponent } from './recipes/recipe-page/recipe-page.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
+
 
 const appRoutes: Routes = [
   { path: 'courses', component: CoursesComponent },
@@ -22,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'create-course/:create',component: CreateCourseComponent},
   { path: 'recipes', component: RecipesMainPageComponent },
   { path: 'recipes-search', component: RecipeSearchPageComponent },
+  { path: 'recipe/:id/:edit', component: RecipePageComponent },
   { path: 'admin', component: AdminComponent },
   { path:  'main-page', component: MainPageComponent},
   { path:  '', component: MainPageComponent},
@@ -40,6 +43,7 @@ const appRoutes: Routes = [
     CoursePageComponent,
     RecipeSearchPageComponent,
     RecipesMainPageComponent,
+    RecipePageComponent,
     CreateCourseComponent
   ],
   imports: [

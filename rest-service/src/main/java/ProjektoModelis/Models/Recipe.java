@@ -20,13 +20,13 @@ public class Recipe
 	
 	private Integer sudetingumas;
 
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Dish> patiekalas_pagamintas_pagal_recepta;
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "recipes")
 	private List<Course> courses;
 
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comments;
 	
 	private Integer max_patirties_tasku;
