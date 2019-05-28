@@ -102,7 +102,20 @@ public class CourseController
 	{
 		return this.courseRepository.findById(id);
 	}
-	
+
+	@RequestMapping(value = "/deleteCourse/{id}", method = RequestMethod.DELETE)
+	public void deleteCourse(@PathVariable("id") Integer id )
+	{
+		courseRepository.deleteById(id);
+	}
+
+	@RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
+	public void saveCourse(@RequestBody  Course course )
+	{
+		courseRepository.save(course);
+	}
+
+
 	public void deleteCourse( )
 	{
 		

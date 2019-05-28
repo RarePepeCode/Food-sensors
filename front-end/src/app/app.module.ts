@@ -15,10 +15,13 @@ import { CoursePageComponent } from './courses/course-page/course-page.component
 import { RecipeSearchPageComponent } from './recipes/recipe-search-page/recipe-search-page.component';
 import { RecipesMainPageComponent } from './recipes/recipes-main-page/recipes-main-page.component';
 import { RecipePageComponent } from './recipes/recipe-page/recipe-page.component';
+import { CreateCourseComponent } from './courses/create-course/create-course.component';
+
 
 const appRoutes: Routes = [
   { path: 'courses', component: CoursesComponent },
   { path: 'course/:id/:edit',component: CoursePageComponent},
+  { path: 'create-course',component: CreateCourseComponent},
   { path: 'recipes', component: RecipesMainPageComponent },
   { path: 'recipes-search', component: RecipeSearchPageComponent },
   { path: 'recipe/:id/:edit', component: RecipePageComponent },
@@ -40,7 +43,8 @@ const appRoutes: Routes = [
     CoursePageComponent,
     RecipeSearchPageComponent,
     RecipesMainPageComponent,
-    RecipePageComponent
+    RecipePageComponent,
+    CreateCourseComponent
   ],
   imports: [
     BrowserModule,
