@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/courses")
@@ -97,9 +98,9 @@ public class CourseController
 	}
 
 	@RequestMapping(value = "/getCourse/{id}", method = RequestMethod.GET)
-	public Course searchCourses(@PathVariable("id") Integer id )
+	public Optional<Course> searchCourses(@PathVariable("id") Integer id )
 	{
-		return this.courseRepository.getOne(id);
+		return this.courseRepository.findById(id);
 	}
 	
 	public void deleteCourse( )
