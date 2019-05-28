@@ -1,0 +1,13 @@
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="pavadinimas">Pavadinimas</label>
+      <input type="text" class="form-control" id="pavadinimas" name="pavadinimas" placeholder="Pavadinimas" [(ngModel)]="pavadinimas">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="aprasymas">Aprašymas</label>
+        <input type="text" class="form-control" id="aprasymas" name="aprasymas" placeholder="Aprašymas" [(ngModel)]="aprasymas">
+      </div>
+  </div>
+  <input type="button" class="btn btn-primary" value="Ieškoti" (click)="searchRecipes()">
+</form>
