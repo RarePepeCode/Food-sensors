@@ -1,11 +1,75 @@
-<div *ngIf="isEditMode === 'true'" class="name" >
- <h2>{{course.pavadinimas}}</h2>
- <p>Aprašymas: {{course.aprasymas}}</p>
+<div *ngIf="isEditMode === 'true'" class="name">
+  <form>
+    <div class="col-sm-8">
+      <h2>Kurso Redagavimas</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="name">Kurso pavadinimas</label>
+          <input type="text" class="form-control" id="name" value="{{course.pavadinimas}}" required>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="rank">Kurso Įvertinimas</label>
+          <input type="number" class="form-control" id="rank" value="{{course.ivertinimas}}" min="1" max="10" required>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="form-group">
+          <label for="discription">Kurso Aprašymas</label>
+          <textarea rows="5" cols="50" class="form-control" id="discription" value="{{course.aprasymas}}"
+            required></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-outline-success" (click)="saveCourse(cource.id)">Saugoti</button>
+      </div>
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-outline-danger" (click)="deleteCourse(cource.id)">Trinti</button>
+      </div>
+    </div>
+  </form>
 </div>
 
-<div *ngIf="isEditMode === 'false'" class="name" >
-    <h2>{{course.pavadinimas}}</h2>
-    <p>Aprašymas: {{course.aprasymas}}</p>
-   </div>
-   
-   
+<div *ngIf="isEditMode === 'false'" class="name">
+  <form>
+    <div class="col-sm-6">
+      <h2>Kurso Redagavimas</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <h2>{{course.pavadinimas}}</h2>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <p>Aprašymas: {{course.aprasymas}}</p>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="rank">Kurso Įvertinimas</label>
+                    <input type="number" class="form-control" id="rank" value="" min="1" max="10" required>
+                  </div>
+            </div>
+          </div>
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-outline-success" (click)="vertinti(cource.id)">Vertinti</button>
+          </div>
+
+      </div>
+      <div class="col-sm-6">
+        <h2>VARTOTOJŲ ĮVERTINTAS {{course.ivertinimas}} BALAIS</h2>
+        </div>
+    </div>
+  </form>
+</div>

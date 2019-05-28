@@ -28,7 +28,7 @@ export class CoursePageComponent implements OnInit {
       }
     );
     console.log(this.isEditMode);
-    this.course = new Course(1, "Pavadinimas", 10, "ilgas aprasymas");
+    this.course = new Course(1, "Pavadinimas", 10, "ilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymasilgas aprasymas");
   }
 
 }
