@@ -11,3 +11,22 @@
   </div>
   <input type="button" class="btn btn-primary" value="Ieškoti" (click)="searchRecipes()">
 </form>
+
+<table class="table" *ngIf="hasRecipes">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Pavadinimas</th>
+        <th scope="col">Aprašymas</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of recipes; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td>{{recipe.pavadinimas}}</td>
+        <td>{{recipe.aprasymas}}</td>
+        <td> <button type="button" class="btn btn-info" (click)="selectRecipe(recipes.id)">Atidaryti</button>
+      </tr>
+    </tbody>
+</table>

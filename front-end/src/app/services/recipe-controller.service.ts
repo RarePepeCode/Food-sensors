@@ -13,6 +13,6 @@ export class RecipeControllerService {
   constructor(private http: HttpClient) { }
 
   searchRecipes(pavadinimas: string, aprasymas: string): Observable<Array<Recipe>> {
-    return this.http.get<Array<Recipe>>(recipeUrl + 'searchRecipes?pavadinimas="' + pavadinimas + '"&aprasymas="' + aprasymas + '"');
+    return this.http.get<Array<Recipe>>(recipeUrl + 'searchRecipes?pavadinimas=' + pavadinimas + '&aprasymas=' + aprasymas);
   }
 }

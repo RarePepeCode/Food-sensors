@@ -64,6 +64,7 @@ public class RecipeController
 	@RequestMapping(value = {"/searchRecipes"}, method = RequestMethod.GET)
 	public List<Recipe> searchRecipes(@RequestParam(value="pavadinimas", required=true) String pavadinimas,
 									  @RequestParam(value="aprasymas", required=true) String aprasymas) {
+
 		return this.recipeRepository.getAllRecipes(pavadinimas, aprasymas);
 	}
 	
