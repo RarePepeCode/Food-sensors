@@ -4,6 +4,8 @@
 
 package ProjektoModelis.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -22,11 +24,13 @@ public class User
 	
 	private String email;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
-	private List<Course> naudotojo_lankomas_kursas;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_course_id")
+	private Course naudotojo_lankomas_kursas;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	private List<Dish> naudotojo_pagamintas_patiekalas;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_dish_id")
+	private Dish naudotojo_pagamintas_patiekalas;
 
 	private States busena;
 
@@ -93,19 +97,19 @@ public class User
 		this.email = email;
 	}
 
-	public List<Course> getNaudotojo_lankomas_kursas() {
+	public Course getNaudotojo_lankomas_kursas() {
 		return naudotojo_lankomas_kursas;
 	}
 
-	public void setNaudotojo_lankomas_kursas(List<Course> naudotojo_lankomas_kursas) {
+	public void setNaudotojo_lankomas_kursas(Course naudotojo_lankomas_kursas) {
 		this.naudotojo_lankomas_kursas = naudotojo_lankomas_kursas;
 	}
 
-	public List<Dish> getNaudotojo_pagamintas_patiekalas() {
+	public Dish getNaudotojo_pagamintas_patiekalas() {
 		return naudotojo_pagamintas_patiekalas;
 	}
 
-	public void setNaudotojo_pagamintas_patiekalas(List<Dish> naudotojo_pagamintas_patiekalas) {
+	public void setNaudotojo_pagamintas_patiekalas(Dish naudotojo_pagamintas_patiekalas) {
 		this.naudotojo_pagamintas_patiekalas = naudotojo_pagamintas_patiekalas;
 	}
 

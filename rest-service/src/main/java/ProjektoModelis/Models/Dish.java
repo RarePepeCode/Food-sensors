@@ -17,8 +17,8 @@ public class Dish
 	
 	private String patiekalo_informacija;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_user")
+	@OneToOne(mappedBy = "naudotojo_pagamintas_patiekalas", cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY, optional = false)
 	private User user;
 
 	@ManyToOne(fetch = FetchType.LAZY)

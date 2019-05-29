@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2019 at 06:10 PM
+-- Generation Time: May 29, 2019 at 04:19 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -34,7 +34,7 @@ CREATE TABLE `comment` (
   `komentaras` varchar(255) DEFAULT NULL,
   `fk_course` int(11) DEFAULT NULL,
   `fk_naudotojas_paraso_komentara` int(11) DEFAULT NULL,
-  `fk_recipe` int(11) DEFAULT NULL
+  `fk_recipe` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -47,6 +47,7 @@ CREATE TABLE `course` (
   `id` int(11) NOT NULL,
   `aprasymas` varchar(255) DEFAULT NULL,
   `ivertinimas` int(11) DEFAULT NULL,
+  `patvirtintas` bit(1) NOT NULL,
   `pavadinimas` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -54,32 +55,9 @@ CREATE TABLE `course` (
 -- Dumping data for table `course`
 --
 
-INSERT INTO `course` (`id`, `aprasymas`, `ivertinimas`, `pavadinimas`) VALUES
-(0, 'Geras kursas naujokams.', 3, 'Pradedantysis.'),
-(1, 'Geras kursas naujokams.', 3, 'Pradedantysis.'),
-(2, 'Blogas kursas naujokams.', 2, 'Pradedantysis.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `course_recipe`
---
-
-CREATE TABLE `course_recipe` (
-  `course_id` int(11) NOT NULL,
-  `recipe_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `course_user`
---
-
-CREATE TABLE `course_user` (
-  `course_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+INSERT INTO `course` (`id`, `aprasymas`, `ivertinimas`, `patvirtintas`, `pavadinimas`) VALUES
+(1, 'Geras meal.', 3, b'1', 'Meal'),
+(2, 'Blogas meal.', 3, b'1', 'Meal2');
 
 -- --------------------------------------------------------
 
@@ -91,8 +69,7 @@ CREATE TABLE `dish` (
   `id` int(11) NOT NULL,
   `ivertinimas` double NOT NULL,
   `patiekalo_informacija` varchar(255) DEFAULT NULL,
-  `fk_recipe` int(11) DEFAULT NULL,
-  `fk_user` int(11) DEFAULT NULL
+  `fk_recipe` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -127,9 +104,19 @@ CREATE TABLE `recipe` (
   `aprasymas` varchar(255) DEFAULT NULL,
   `busena` int(11) DEFAULT NULL,
   `max_patirties_tasku` int(11) DEFAULT NULL,
+  `patvirtintas` bit(1) NOT NULL,
   `pavadinimas` varchar(255) DEFAULT NULL,
-  `sudetingumas` int(11) DEFAULT NULL
+  `sudetingumas` int(11) DEFAULT NULL,
+  `fk_course_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `recipe`
+--
+
+INSERT INTO `recipe` (`id`, `aprasymas`, `busena`, `max_patirties_tasku`, `patvirtintas`, `pavadinimas`, `sudetingumas`, `fk_course_id`) VALUES
+(1, 'Duonike', 2, 10, b'1', 'Duona su cesnakiniu', 4, 1),
+(2, 'Gardu', 2, 10, b'1', 'Tiesiog ryziai', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -143,8 +130,17 @@ CREATE TABLE `user` (
   `email` varchar(255) DEFAULT NULL,
   `patirties_taskai` int(11) DEFAULT NULL,
   `slaptazodis` varchar(255) DEFAULT NULL,
-  `vardas` varchar(255) DEFAULT NULL
+  `vardas` varchar(255) DEFAULT NULL,
+  `fk_course_id` int(11) DEFAULT NULL,
+  `fk_dish_id` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `busena`, `email`, `patirties_taskai`, `slaptazodis`, `vardas`, `fk_course_id`, `fk_dish_id`) VALUES
+(1, 2, 'nera@gmail.com', 0, NULL, 'Mantas', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -166,38 +162,26 @@ ALTER TABLE `course`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `course_recipe`
---
-ALTER TABLE `course_recipe`
-  ADD KEY `FKfylffpsua44wsau9g9vusk3c1` (`recipe_id`),
-  ADD KEY `FKevhkr6as82kjt1eo1kyvqrnll` (`course_id`);
-
---
--- Indexes for table `course_user`
---
-ALTER TABLE `course_user`
-  ADD KEY `FK2e2vx1koh906052eej4244e0v` (`user_id`),
-  ADD KEY `FKm2sw6qb4f42s0be8drns7d71r` (`course_id`);
-
---
 -- Indexes for table `dish`
 --
 ALTER TABLE `dish`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FKoxd4yhuj14ksi22sva9n6u0bg` (`fk_recipe`),
-  ADD KEY `FKkrht0vi76n906d3oq04d2grou` (`fk_user`);
+  ADD KEY `FKoxd4yhuj14ksi22sva9n6u0bg` (`fk_recipe`);
 
 --
 -- Indexes for table `recipe`
 --
 ALTER TABLE `recipe`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKif5usgyxl51od3k5c4y2gw53v` (`fk_course_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKfu559fwn6h53j19gaqhpjabk8` (`fk_course_id`),
+  ADD KEY `FKqkci61ud43mg4mxvleimkxcsk` (`fk_dish_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
