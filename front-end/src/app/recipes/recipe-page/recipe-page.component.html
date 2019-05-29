@@ -1,44 +1,96 @@
-<h3>Receptas</h3>
-<ul class="list-group">
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Pavadinimas:
-    <span>{{recipe?.pavadinimas}}</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Aprašymas:
-    <span>{{recipe?.aprasymas}}</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Sudėtingumas:
-    <span>{{recipe?.sudetingumas}}</span>
-  </li>
-  <li class="list-group-item d-flex justify-content-between align-items-center">
-    Max patirties taškų:
-    <span>{{recipe?.max_patirties_tasku}}</span>
-  </li>
-</ul>
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="komentaroTekstas">Komentaras</label>
-      <input type="text" class="form-control" id="komentaroTekstas" name="komentaroTekstas" placeholder="komentaroTekstas" [(ngModel)]="komentaroTekstas">
-    </div>
-  </div>
-  <input type="button" class="btn btn-primary" value="Komentuoti" (click)="comment()">
-</form>
-<form>
-  <div class="form-row">
+<div *ngIf="isEditMode === 'false'">
+  <h3>Receptas</h3>
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Pavadinimas:
+      <span>{{recipe?.pavadinimas}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Aprašymas:
+      <span>{{recipe?.aprasymas}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Sudėtingumas:
+      <span>{{recipe?.sudetingumas}}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      Max patirties taškų:
+      <span>{{recipe?.max_patirties_tasku}}</span>
+    </li>
+  </ul>
+  <form>
+    <div class="form-row">
       <div class="form-group col-md-12">
-          <label for="ivertinimas">Įvertinimas</label>
-          <select class="form-control" id="ivertinimas" name="ivertinimas" [(ngModel)]="ivertinimas">
-            <option selected="selected">1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-  </div>
-  <input type="button" class="btn btn-primary" value="Įvertinti" (click)="rate()">
-</form>
+        <label for="komentaroTekstas">Komentaras</label>
+        <input type="text" class="form-control" id="komentaroTekstas" name="komentaroTekstas"
+          placeholder="komentaroTekstas" [(ngModel)]="komentaroTekstas">
+      </div>
+    </div>
+    <input type="button" class="btn btn-primary" value="Komentuoti" (click)="comment()">
+  </form>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="ivertinimas">Įvertinimas</label>
+        <select class="form-control" id="ivertinimas" name="ivertinimas" [(ngModel)]="ivertinimas">
+          <option selected="selected">1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </div>
+    <input type="button" class="btn btn-primary" value="Įvertinti" (click)="rate()">
+  </form>
+</div>
 
+<div *ngIf="isEditMode === 'true'">
+    <form>
+        <div class="col-sm-8">
+          <h2>Recepto Redagavimo Forma</h2>
+          <hr>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="name">Recepto Pavadinimas</label>
+                <input type="text" class="form-control" id="name" [(ngModel)] ="recipe.pavadinimas" name="name" required>
+              </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="exp">Recepto Max Patirties taškai</label>
+              <input type="text" class="form-control" id="exp" [(ngModel)] ="recipe.max_patirties_tasku" name="exp" required>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="rank">Kurso Sudėtingumas</label>
+              <input type="number" class="form-control" id="rank" [(ngModel)] ="recipe.sudetingumas" name="rank" min="1" max="3" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label for="discription">Kurso Aprašymas</label>
+              <textarea rows="5" cols="50" class="form-control" id="discription" name="discription" [(ngModel)] ="recipe.aprasymas"
+                required></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-outline-success" (click)="editRecipe()">Atnaujinti duomenis</button>
+          </div>
+          <div class="col-sm-3">
+            <button type="button" class="btn btn-outline-danger" (click)="deleteRecipe()">Trinti</button>
+          </div>
+        </div>
+      </form>
+
+
+</div>

@@ -72,6 +72,19 @@ public class RecipeController
 	public Optional<Recipe> getRecipe(@PathVariable("id") Integer id) {
 		return this.recipeRepository.findById(id);
 	}
+
+
+	@RequestMapping(value = "/deleteRecipe/{id}", method = RequestMethod.DELETE)
+	public void deleteRecipe(@PathVariable("id") Integer id )
+	{
+		recipeRepository.deleteById(id);
+	}
+
+	@RequestMapping(value = "/saveRecipe", method = RequestMethod.POST)
+	public void saveRecipe(@RequestBody  Recipe recipe )
+	{
+		recipeRepository.save(recipe);
+	}
 	
 	public void openRecipeSuggestion( )
 	{
