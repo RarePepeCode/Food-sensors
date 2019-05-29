@@ -115,12 +115,16 @@ public class CourseController
 	}
 
 	@RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
-	public void saveCourse(@RequestBody  Course course )
+	public void saveCourse(@RequestBody  Course course)
 	{
-		System.out.println(course.toString());
 		courseRepository.save(course);
-		mapRecipesWithCourses(course);
+	}
 
+	@RequestMapping(value = "/saveCoursesRecipes/{id}", method = RequestMethod.POST)
+	public void saveCourses(@RequestBody  Course course, @PathVariable("id") Integer id )
+	{
+		courseRepository.save(course);
+		mapRecipeWithCourses(id);
 	}
 
 
@@ -144,15 +148,20 @@ public class CourseController
 		
 	}
 
-	private void mapRecipesWithCourses(Course course)
+	private void mapRecipeWithCourses(Integer recepeId)
 	{
-		for (Recipe recipe: course.getRecipes())
-		{
-			Optional<Recipe> oldRecipe = recipeRepository.findById(recipe.getId());
-			oldRecipe.get().setCourses(course);
-			recipeRepository.save(oldRecipe.get());
-		}
+		Course course = getLastCourse();
+		Optional<Recipe> recipe = recipeRepository.findById(recepeId);
+		recipe.get().setCourses(course);
+		recipeRepository.save(recipe.get());
 	}
+
+	private Course getLastCourse()
+	{
+		List<Course> courseList = courseRepository.findAll();
+		return courseList.get(courseList.size()-1);
+	}
+
 
 	
 	

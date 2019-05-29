@@ -44,7 +44,7 @@ export class CreateCourseComponent implements OnInit {
 
   submitData(){
     console.log(this.isCreate);
-    this.courseController.saveCourse(this.course).subscribe();
+    this.courseController.saveCoursesWithRecipes(this.course, this.course.recipes.pop().id).subscribe();
     if (this.isCreate)
     {
       this.router.navigate(['admin']);

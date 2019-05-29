@@ -34,11 +34,15 @@ export class CourseControllerService {
 
   saveCourse(course : Course): Observable<{}> {
     console.log(course);
-    return this.http.post((courseUrl + 'saveCourse'), course, httpOptions);
+    return this.http.post((courseUrl + 'saveCourse'), course,  httpOptions);
   }
 
   selectCourse(courseId: number):Observable<number> {
     return this.userController.registerToCourse(courseId, 1);
+  }
+
+  saveCoursesWithRecipes(course: Course, id :number): Observable<{}> {
+    return this.http.post((courseUrl + 'saveCoursesRecipes/' + id), course, httpOptions);
   }
 
 }

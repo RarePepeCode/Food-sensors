@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/models/course.model';
 import { CourseControllerService } from 'src/app/services/course-controller.service';
 import { Router } from '@angular/router';
+import { RecipeControllerService } from 'src/app/services/recipe-controller.service';
 
 @Component({
   selector: 'app-course-page',
@@ -16,7 +17,7 @@ export class CoursePageComponent implements OnInit {
   isEditMode : boolean = false;
 
 
-  constructor(private courseController: CourseControllerService, private route: ActivatedRoute,  private router: Router) { }
+  constructor(private courseController: CourseControllerService, private recipeController: RecipeControllerService, private route: ActivatedRoute,  private router: Router) { }
 
   ngOnInit() {     
     this.route.params.subscribe( params => {
@@ -28,9 +29,15 @@ export class CoursePageComponent implements OnInit {
         this.course = course;
         console.log(course);
         console.log(this.course);
-      }
+      }      
     );
-  }
+
+    this.recipeController.getAllCoursesRecipes(this.courseID)
+    .subscribe((recipes) => {
+      this.course.recipes = recipes;
+      console.log(this.course);
+  });
+}
 
   submitCourse(){
  
@@ -54,15 +61,10 @@ export class CoursePageComponent implements OnInit {
   }
 
   registerToCourse(courseId: number) {
-<<<<<<< HEAD
-    //this.courseController.selectCourse(courseId).subscribe();
-    this.navigateBack();
-=======
     this.courseController.selectCourse(courseId).subscribe(
       (id: number) => {
         console.log(id);
       }
     );
->>>>>>> 600faae3be2e2850d930b84c7c2208bda461155c
   }
 }

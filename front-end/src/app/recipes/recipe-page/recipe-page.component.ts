@@ -37,23 +37,23 @@ export class RecipePageComponent implements OnInit {
   }
 
   comment() {
-    let komentaras = new Comment(null, this.komentaroTekstas, this.recipe, null, {id: 1});
+    //let komentaras = new Comment(null, this.komentaroTekstas, this.recipe, null, {id: 1});
 
-    this.commentController.comment(komentaras).subscribe(
-      (id: number) => {
-        this.komentaroTekstas = "";
-        console.log(id);
-      }
-    );
+    // this.commentController.comment(komentaras).subscribe(
+    //   (id: number) => {
+    //     this.komentaroTekstas = "";
+    //     console.log(id);
+    //   }
+    // );
   }
 
   rate() {
-    let komentaras = new Comment(null, null, this.recipe, this.ivertinimas, {id: 1});
-    this.commentController.rate(komentaras).subscribe(
-      (id: number) => {
-        console.log(id);
-      }
-    );
+    // let komentaras = new Comment(null, null, this.recipe, this.ivertinimas, {id: 1});
+    // this.commentController.rate(komentaras).subscribe(
+    //   (id: number) => {
+    //     console.log(id);
+    //   }
+    // );
   }
 
   editRecipe(){

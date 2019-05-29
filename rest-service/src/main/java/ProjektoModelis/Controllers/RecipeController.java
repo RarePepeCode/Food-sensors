@@ -86,12 +86,10 @@ public class RecipeController
 		return findRecipesWithoutCourses(allRecipes);
 	}
 
-	@RequestMapping(value = "/getAllNotCoursesRecipes/{id}", method = RequestMethod.GET)
-	public List<Recipe> getAllNotCoursesRecipes(@PathVariable("id") Integer id)
+	@RequestMapping(value = "/getAllCoursesRecipes/{id}", method = RequestMethod.GET)
+	public List<Recipe> getAllCoursesRecipes(@PathVariable("id") Integer id)
 	{
-		List<Recipe> allRecipes = this.recipeRepository.getAllRecipes();
-		List<Recipe> coursesRecipes = courseRepository.findById(id).get().getRecipes();
-		return  filterOutCoursesReicpes(allRecipes, coursesRecipes);
+		return this.recipeRepository.getAllCoursesRecipes(id);
 	}
 
 	@RequestMapping(value = "/deleteRecipe/{id}", method = RequestMethod.DELETE)
@@ -104,6 +102,12 @@ public class RecipeController
 	public void saveRecipe(@RequestBody  Recipe recipe )
 	{
 		recipeRepository.save(recipe);
+	}
+
+	@RequestMapping(value = "/saveCoursesRecipes/{id}", method = RequestMethod.POST)
+	public void saveCoursesRecipes(@RequestBody  List<Recipe> recipes, @PathVariable("id") Integer id )
+	{
+		recipeRepository.saveAll(recipes);
 	}
 	
 	public void openRecipeSuggestion( )

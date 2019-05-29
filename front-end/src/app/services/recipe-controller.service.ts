@@ -27,8 +27,9 @@ export class RecipeControllerService {
     return this.http.get<Recipe>(recipeUrl + 'getRecipe/' + id);
   }
 
-  getAllNotCoursesRecipes(id: number): Observable<Array<Recipe>> {
-    return this.http.get<Array<Recipe>>(recipeUrl + 'getAllNotCoursesRecipes/' + id);
+  getAllCoursesRecipes(id: number): Observable<Array<Recipe>> {
+    console.log("QQQQQQQQQQQQQ");
+    return this.http.get<Array<Recipe>>(recipeUrl + 'getAllCoursesRecipes/' + id);
   }
 
   getRecipesForNewCourse() :  Observable<Array<Recipe>> {
@@ -48,5 +49,4 @@ export class RecipeControllerService {
     console.log(recipe);
     return this.http.post((recipeUrl + 'saveRecipe'), recipe, httpOptions);
   }
-
 }
