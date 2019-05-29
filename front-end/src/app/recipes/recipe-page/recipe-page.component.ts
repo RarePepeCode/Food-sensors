@@ -1,5 +1,5 @@
 import { CommentControllerService } from './../../services/comment-controller.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from 'src/models/recipe.model';
 import { RecipeControllerService } from 'src/app/services/recipe-controller.service';
@@ -20,13 +20,14 @@ export class RecipePageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
     private recipeController: RecipeControllerService, 
-    private commentController: CommentControllerService) { }
+    private commentController: CommentControllerService,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe( params => {
       this.recipeId = params['id'],
       this.isEditMode = params['edit']
-
+      console.log(params)
       this.recipeController.getRecipe(this.recipeId)
         .subscribe((recipe) => {
           this.recipe = recipe;
@@ -54,4 +55,22 @@ export class RecipePageComponent implements OnInit {
       }
     );
   }
+
+  editRecipe(){
+    console.log("ciga");
+    this.recipeController.editRecipe(this.recipe).subscribe();    
+  }
+
+  deleteRecipe(){
+    this.recipeController.deleteRecipe(this.recipeId).subscribe();
+    if (this.isEditMode)
+    {
+      this.router.navigate(['admin']);
+    }
+    else{
+      this.router.navigate(['recipes']);
+    }
+
+  }
+
 }

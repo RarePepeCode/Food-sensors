@@ -13,7 +13,6 @@ export class CoursesMainPageComponent implements OnInit {
   
 
   @Input() isAdminTab : boolean
-  @Output() openCourse = new EventEmitter<number>();
   buttonName : string
 
   constructor(private courseController: CourseControllerService, private router: Router) {}

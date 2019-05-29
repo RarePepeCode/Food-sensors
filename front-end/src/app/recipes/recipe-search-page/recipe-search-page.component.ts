@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RecipeControllerService } from 'src/app/services/recipe-controller.service';
 import { Recipe } from 'src/models/recipe.model';
 import { Router } from '@angular/router';
@@ -14,10 +14,21 @@ export class RecipeSearchPageComponent implements OnInit {
   aprasymas: string;
   recipes: Array<Recipe>;
   hasRecipes: boolean = false;
+  buttonName: string;
+
+  @Input() isAdminTab : boolean = false
 
   constructor(private recipeController: RecipeControllerService, private router: Router) { }
 
   ngOnInit() {
+    if (this.isAdminTab)
+    {
+      this.buttonName = "Kurti Receptą";
+    }
+    else
+    {
+      this.buttonName = "Siūlyti Receptą";
+    }
   }
 
   searchRecipes() {
@@ -31,7 +42,7 @@ export class RecipeSearchPageComponent implements OnInit {
   }
 
   selectRecipe(recipeId: number) {
-    this.router.navigate(['recipe', recipeId, false]);
+    this.router.navigate(['recipe', recipeId, this.isAdminTab]);
   }
 
   replaceUndefinedFields() {

@@ -2,31 +2,41 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="pavadinimas">Pavadinimas</label>
-      <input type="text" class="form-control" id="pavadinimas" name="pavadinimas" placeholder="Pavadinimas" [(ngModel)]="pavadinimas">
+      <input type="text" class="form-control" id="pavadinimas" name="pavadinimas" placeholder="Pavadinimas"
+        [(ngModel)]="pavadinimas">
     </div>
     <div class="form-group col-md-6">
-        <label for="aprasymas">Aprašymas</label>
-        <input type="text" class="form-control" id="aprasymas" name="aprasymas" placeholder="Aprašymas" [(ngModel)]="aprasymas">
-      </div>
+      <label for="aprasymas">Aprašymas</label>
+      <input type="text" class="form-control" id="aprasymas" name="aprasymas" placeholder="Aprašymas"
+        [(ngModel)]="aprasymas">
+    </div>
   </div>
-  <input type="button" class="btn btn-primary" value="Ieškoti" (click)="searchRecipes()">
+  <div class="row">
+    <div class="col-md-2">
+      <input type="button" class="btn btn-warning" value="Ieškoti" (click)="searchRecipes()">
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-primary" (click)="openCreateCourse()">{{buttonName}}</button>
+    </div>
+  </div>
+
 </form>
 
 <table class="table" *ngIf="hasRecipes">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Pavadinimas</th>
-        <th scope="col">Aprašymas</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let recipe of recipes; let i = index">
-        <th scope="row">{{i + 1}}</th>
-        <td>{{recipe.pavadinimas}}</td>
-        <td>{{recipe.aprasymas}}</td>
-        <td> <button type="button" class="btn btn-info" (click)="selectRecipe(recipe.id)">Atidaryti</button>
-      </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Pavadinimas</th>
+      <th scope="col">Aprašymas</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let recipe of recipes; let i = index">
+      <th scope="row">{{i + 1}}</th>
+      <td>{{recipe.pavadinimas}}</td>
+      <td>{{recipe.aprasymas}}</td>
+      <td> <button type="button" class="btn btn-info" (click)="selectRecipe(recipe.id)">Atidaryti</button>
+    </tr>
+  </tbody>
 </table>
