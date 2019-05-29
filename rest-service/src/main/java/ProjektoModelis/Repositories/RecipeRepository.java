@@ -12,4 +12,8 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
     @Query(value = "SELECT * FROM Recipe r WHERE r.pavadinimas LIKE %:pavadinimas% and r.aprasymas LIKE %:aprasymas%", nativeQuery = true)
     List<Recipe> getAllRecipes(@Param("pavadinimas") String pavadinimas, @Param("aprasymas") String aprasymas);
 
+    @Query(value = "SELECT * FROM Recipe r WHERE r.fk_course_id = :courseId", nativeQuery = true)
+    List<Recipe> getCourseRecipes(@Param("courseId") String courseId);
+
+
 }

@@ -14,7 +14,7 @@ export class CoursePageComponent implements OnInit {
   course : Course
   courseID : number;
   isEditMode : boolean = false;
-
+  showCourseExercicePage: boolean = false;
 
   constructor(private courseController: CourseControllerService, private route: ActivatedRoute,  private router: Router) { }
 
@@ -55,8 +55,12 @@ export class CoursePageComponent implements OnInit {
   registerToCourse(courseId: number) {
     this.courseController.selectCourse(courseId).subscribe(
       (id: number) => {
-        console.log(id);
+        this.showCourseExercicePage = true;
       }
     );
+  }
+
+  openCourseExercisePage(id: number) {
+    this.router.navigate(['/course-exercise', id]);
   }
 }
