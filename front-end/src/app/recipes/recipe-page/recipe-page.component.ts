@@ -41,6 +41,7 @@ export class RecipePageComponent implements OnInit {
 
     this.commentController.comment(komentaras).subscribe(
       (id: number) => {
+        this.komentaroTekstas = "";
         console.log(id);
       }
     );
