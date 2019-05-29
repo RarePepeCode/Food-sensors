@@ -5,8 +5,10 @@
 package ProjektoModelis.Controllers;
 
 import ProjektoModelis.Models.Dish;
+import ProjektoModelis.Models.Recipe;
 import ProjektoModelis.Repositories.CourseRepository;
 import ProjektoModelis.Repositories.DishRepository;
+import ProjektoModelis.Repositories.RecipeRepository;
 import ProjektoModelis.View.Administrator.SuggestedCourses;
 import ProjektoModelis.View.Main.CoursePage;
 import ProjektoModelis.View.Main.CourseExercisePage;
@@ -37,6 +39,9 @@ public class CourseController
 
 	@Autowired
 	private CourseRepository courseRepository;
+
+	@Autowired
+	private RecipeRepository recipeRepository;
 
 	@Autowired
 	private DishRepository dishRepository;
@@ -112,7 +117,10 @@ public class CourseController
 	@RequestMapping(value = "/saveCourse", method = RequestMethod.POST)
 	public void saveCourse(@RequestBody  Course course )
 	{
+		System.out.println(course.toString());
 		courseRepository.save(course);
+		mapRecipesWithCourses(course);
+
 	}
 
 
@@ -135,6 +143,17 @@ public class CourseController
 	{
 		
 	}
+
+	private void mapRecipesWithCourses(Course course)
+	{
+		for (Recipe recipe: course.getRecipes())
+		{
+			Optional<Recipe> oldRecipe = recipeRepository.findById(recipe.getId());
+			oldRecipe.get().setCourses(course);
+			recipeRepository.save(oldRecipe.get());
+		}
+	}
+
 	
 	
 }

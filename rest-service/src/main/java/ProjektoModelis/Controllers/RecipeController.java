@@ -5,6 +5,7 @@
 package ProjektoModelis.Controllers;
 
 import ProjektoModelis.Models.Course;
+import ProjektoModelis.Repositories.CourseRepository;
 import ProjektoModelis.Repositories.RecipeRepository;
 import ProjektoModelis.View.Administrator.CreateRecipe;
 import ProjektoModelis.Models.Recipe;
@@ -13,6 +14,8 @@ import ProjektoModelis.View.Main.RecipeSearchPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,6 +34,9 @@ public class RecipeController
 
 	@Autowired
 	private RecipeRepository recipeRepository;
+
+	@Autowired
+	private CourseRepository courseRepository;
 	
 	public void openCreateRecipePage( )
 	{
@@ -73,6 +79,20 @@ public class RecipeController
 		return this.recipeRepository.findById(id);
 	}
 
+	@RequestMapping(value = "/recipesForNewCourse", method = RequestMethod.GET)
+	public List<Recipe> getRecipesForNewCourse( )
+	{
+		List<Recipe> allRecipes = this.recipeRepository.findAll();
+		return findRecipesWithoutCourses(allRecipes);
+	}
+
+	@RequestMapping(value = "/getAllNotCoursesRecipes/{id}", method = RequestMethod.GET)
+	public List<Recipe> getAllNotCoursesRecipes(@PathVariable("id") Integer id)
+	{
+		List<Recipe> allRecipes = this.recipeRepository.getAllRecipes();
+		List<Recipe> coursesRecipes = courseRepository.findById(id).get().getRecipes();
+		return  filterOutCoursesReicpes(allRecipes, coursesRecipes);
+	}
 
 	@RequestMapping(value = "/deleteRecipe/{id}", method = RequestMethod.DELETE)
 	public void deleteRecipe(@PathVariable("id") Integer id )
@@ -110,6 +130,30 @@ public class RecipeController
 	{
 		
 	}
-	
+
+	private List<Recipe> filterOutCoursesReicpes (List<Recipe> allRecipes, List<Recipe> courseRecipes)
+	{
+		List<Recipe> filteredRecipes = new ArrayList<Recipe>();
+		for (Recipe recipe : allRecipes)
+		{
+			if (!courseRecipes.contains(recipe))
+			{
+				filteredRecipes.add(recipe);
+			}
+		}
+		return  filteredRecipes;
+	}
+
+	private List<Recipe> findRecipesWithoutCourses(List<Recipe> recipes)
+	{
+		List<Recipe> filteredRecipes = new ArrayList<Recipe>();
+		for(Recipe recipe : recipes)
+		{
+			if (recipe.getCourse() == null)
+				filteredRecipes.add(recipe);
+		}
+		return filteredRecipes;
+	}
+
 	
 }

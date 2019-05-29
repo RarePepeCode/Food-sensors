@@ -25,14 +25,15 @@ export class CoursePageComponent implements OnInit {
       });
     this.courseController.getCourse(this.courseID)
       .subscribe((course) => {
-        console.log("WE" + course)
         this.course = course;
+        console.log(course);
+        console.log(this.course);
       }
     );
   }
 
   submitCourse(){
-    console.log("ciga");
+ 
     this.courseController.saveCourse(this.course).subscribe();
     this.navigateBack();  
   }
