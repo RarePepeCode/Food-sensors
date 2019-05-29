@@ -27,9 +27,9 @@ public class Recipe
 	@JsonIgnore
 	private List<Dish> patiekalas_pagamintas_pagal_recepta;
 
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "recipes")
-	@JsonIgnore
-	private List<Course> courses;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_course_id")
+	private Course course;
 
 	@OneToMany(mappedBy = "recipe", fetch = FetchType.LAZY)
 	@JsonIgnore
@@ -38,6 +38,8 @@ public class Recipe
 	private Integer max_patirties_tasku;
 	
 	private States busena;
+
+	private boolean patvirtintas;
 	
 	public void saveRecipe( )
 	{
@@ -133,11 +135,19 @@ public class Recipe
 		this.busena = busena;
 	}
 
-	public List<Course> getCourses() {
-		return courses;
+	public Course getCourse() {
+		return course;
 	}
 
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
+	public void setCourses(Course course) {
+		this.course = course;
+	}
+
+	public boolean getPatvirtintas() {
+		return patvirtintas;
+	}
+
+	public void setPatvirtintas(boolean patvirtintas) {
+		this.patvirtintas = patvirtintas;
 	}
 }

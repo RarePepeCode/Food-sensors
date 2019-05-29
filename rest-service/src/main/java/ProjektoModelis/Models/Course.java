@@ -16,26 +16,20 @@ public class Course
 
 	private String pavadinimas;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "course_user", joinColumns = {
-			@JoinColumn(name = "course_id", nullable = false, updatable = false)
-	}, inverseJoinColumns = { @JoinColumn(name = "user_id",
-			nullable = false, updatable = false) })
+	@OneToMany(mappedBy="naudotojo_lankomas_kursas", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<User> users;
 	
 	private Integer ivertinimas;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "course_recipe", joinColumns = {
-			@JoinColumn(name = "course_id", nullable = false, updatable = false)
-			}, inverseJoinColumns = { @JoinColumn(name = "recipe_id",
-					nullable = false, updatable = false) })
+	@OneToMany(mappedBy = "course",fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Recipe> recipes;
 
 	@OneToMany(mappedBy="course", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Comment> comments;
 	
 	private String aprasymas;
+
+	private boolean patvirtintas;
 	
 	public void saveCourse( )
 	{
@@ -121,5 +115,13 @@ public class Course
 
 	public void setAprasymas(String aprasymas) {
 		this.aprasymas = aprasymas;
+	}
+
+	public boolean getPatvirtintas() {
+		return patvirtintas;
+	}
+
+	public void setPatvirtintas(boolean patvirtintas) {
+		this.patvirtintas = patvirtintas;
 	}
 }

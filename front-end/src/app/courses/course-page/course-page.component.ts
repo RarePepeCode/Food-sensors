@@ -43,7 +43,7 @@ export class CoursePageComponent implements OnInit {
     this.navigateBack(); 
   }
 
-  navigateBack() {
+  navigateBack() { //isEditMode === 'true'
     if (this.isEditMode)
     {
       this.router.navigate(['admin']);
@@ -53,4 +53,8 @@ export class CoursePageComponent implements OnInit {
     }
   }
 
+  registerToCourse(courseId: number) {
+    this.courseController.selectCourse(courseId).subscribe();
+    this.navigateBack();
+  }
 }
