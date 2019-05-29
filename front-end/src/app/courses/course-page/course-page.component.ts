@@ -25,7 +25,6 @@ export class CoursePageComponent implements OnInit {
       });
     this.courseController.getCourse(this.courseID)
       .subscribe((course) => {
-        console.log("WE" + course)
         this.course = course;
       }
     );

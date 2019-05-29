@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipe } from 'src/models/recipe.model';
+import { Course } from 'src/models/course.model';
 
 const recipeUrl = 'http://localhost:8080/recipes/';
 
@@ -25,19 +26,27 @@ export class RecipeControllerService {
   getRecipe(id: number): Observable<Recipe> {
     return this.http.get<Recipe>(recipeUrl + 'getRecipe/' + id);
   }
+
+  getAllNotCoursesRecipes(id: number): Observable<Array<Recipe>> {
+    return this.http.get<Array<Recipe>>(recipeUrl + 'getAllNotCoursesRecipes/' + id);
+  }
+
+  getRecipesForNewCourse() :  Observable<Array<Recipe>> {
+    return this.http.get<Array<Recipe>>(recipeUrl + 'recipesForNewCourse')
+  }
   
   deleteRecipe(id): Observable<{}> {
     return this.http.delete(recipeUrl + 'deleteRecipe/' + id);
   }
 
-  editRecipe(course : Recipe): Observable<{}> {
-    console.log(course);
-    return this.http.post((recipeUrl + 'saveRecipe'), course, httpOptions);
+  editRecipe(recipe : Recipe): Observable<{}> {
+    console.log(recipe);
+    return this.http.post((recipeUrl + 'saveRecipe'), recipe, httpOptions);
   }
 
-  saveRecipe(course : Recipe): Observable<{}> {
-    console.log(course);
-    return this.http.post((recipeUrl + 'saveRecipe'), course, httpOptions);
+  saveRecipe(recipe : Recipe): Observable<{}> {
+    console.log(recipe);
+    return this.http.post((recipeUrl + 'saveRecipe'), recipe, httpOptions);
   }
 
 }

@@ -1,36 +1,60 @@
 <div class="name">
-    <form>
-      <div class="col-sm-8">
-        <h2>Kurso Kurino Forma</h2>
-        <hr>
-      </div>
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="form-group">
-            <label for="name">Kurso Pavadinimas</label>
-            <input type="text" class="form-control" id="name" [(ngModel)] ="course.pavadinimas" name="name" required>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="form-group">
-            <label for="rank">Kurso Įvertinimas</label>
-            <input type="number" class="form-control" id="rank" [(ngModel)] ="course.ivertinimas" name="rank" min="1" max="10" required>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="form-group">
-            <label for="discription">Kurso Aprašymas</label>
-            <textarea rows="5" cols="50" class="form-control" id="discription" name="discription" [(ngModel)] ="course.aprasymas"
-              required></textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <button type="button" class="btn btn-outline-success" (click)="submitData()">Saugoti</button>
-        </div>
-      </div>
-    </form>
+
+  <div class="col-sm-8">
+    <h2>Kurso Kurino Forma</h2>
+    <hr>
   </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <form>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label for="name">Kurso Pavadinimas</label>
+              <input type="text" class="form-control" id="name" [(ngModel)]="course.pavadinimas" name="name" required>
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label for="rank">Kurso Įvertinimas</label>
+              <input type="number" class="form-control" id="rank" [(ngModel)]="course.ivertinimas" name="rank" min="1"
+                max="10" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="discription">Kurso Aprašymas</label>
+              <textarea rows="5" cols="50" class="form-control" id="discription" name="discription"
+                [(ngModel)]="course.aprasymas" required></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <button type="button" class="btn btn-outline-success" (click)="submitData()">Saugoti</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <h4>Kurso Receptai</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Pavadinimas</th>
+          <th>></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let recipe of recipes; let i = index">
+          <td>{{recipe.pavadinimas}}</td>
+          <td> <button type="button" class="btn btn-info" (click)="addRecipe(recipe)">Pridėti</button> </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
