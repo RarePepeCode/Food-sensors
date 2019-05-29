@@ -26,6 +26,8 @@ export class CoursePageComponent implements OnInit {
     this.courseController.getCourse(this.courseID)
       .subscribe((course) => {
         this.course = course;
+        console.log(course);
+        console.log(this.course);
       }
     );
 
@@ -33,7 +35,7 @@ export class CoursePageComponent implements OnInit {
   }
 
   submitCourse(){
-    console.log("ciga");
+ 
     this.courseController.saveCourse(this.course).subscribe();
     this.navigateBack();  
   }
@@ -54,7 +56,7 @@ export class CoursePageComponent implements OnInit {
   }
 
   registerToCourse(courseId: number) {
-    this.courseController.selectCourse(courseId).subscribe();
+    //this.courseController.selectCourse(courseId).subscribe();
     this.navigateBack();
   }
 }

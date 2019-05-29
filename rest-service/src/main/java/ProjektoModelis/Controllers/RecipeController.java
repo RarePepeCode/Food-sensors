@@ -80,7 +80,7 @@ public class RecipeController
 	}
 
 	@RequestMapping(value = "/recipesForNewCourse", method = RequestMethod.GET)
-	public List<Course> getRecipesForNewCourse( )
+	public List<Recipe> getRecipesForNewCourse( )
 	{
 		return this.recipeRepository.findAll();
 	}

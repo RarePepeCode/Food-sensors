@@ -28,8 +28,10 @@ export class CreateCourseComponent implements OnInit {
       pavadinimas: '',
       ivertinimas: 0,
       aprasymas: '',
-      recipes: new Array<Recipe>()
+      recipes: new Array<Recipe>(),
+      patvirtintas: this.isCreate
     }
+    this.recipesForNewCourse();
   }
 
   recipesForNewCourse(){
