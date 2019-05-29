@@ -4,6 +4,8 @@
 
 package ProjektoModelis.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,7 +17,7 @@ public class Comment
 
 	private String komentaras;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "fk_recipe")
 	private Recipe recipe;
 	

@@ -4,8 +4,11 @@
 
 package ProjektoModelis.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Recipe
@@ -21,12 +24,15 @@ public class Recipe
 	private Integer sudetingumas;
 
 	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Dish> patiekalas_pagamintas_pagal_recepta;
 
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "recipes")
+	@JsonIgnore
 	private List<Course> courses;
 
-	@OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "recipe", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Comment> comments;
 	
 	private Integer max_patirties_tasku;
