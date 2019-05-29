@@ -4,10 +4,14 @@
 
 package ProjektoModelis.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Course
 {
 	@Id
@@ -17,14 +21,17 @@ public class Course
 	private String pavadinimas;
 
 	@OneToMany(mappedBy="naudotojo_lankomas_kursas", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonIgnore
 	private List<User> users;
 	
 	private Integer ivertinimas;
 
 	@OneToMany(mappedBy = "course",fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonIgnore
 	private List<Recipe> recipes;
 
 	@OneToMany(mappedBy="course", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JsonIgnore
 	private List<Comment> comments;
 	
 	private String aprasymas;
