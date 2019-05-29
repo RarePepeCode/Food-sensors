@@ -11,6 +11,7 @@ import ProjektoModelis.View.Administrator.UserPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,23 +24,13 @@ public class UserController
 	@Autowired
 	private UserRepository userRepository;
 
-	@RequestMapping(value = "/addCourse", method = RequestMethod.PUT)
-	public void registerToCourse(@RequestBody User user) {
-		Optional<User> savedUser = userRepository.findById(user.getId());
-
-//		if (savedUser.isPresent()) {
-//			savedUser.get().setCourseId(user.getCourseId());
-//		}
-
-		userRepository.save(savedUser.get());
+	@RequestMapping(value = "/addCourse", method = RequestMethod.GET)
+	public Integer registerToCourse(@RequestParam(value="id", required=true) Integer id,
+								 @RequestParam(value="courseId", required=true) Integer courseId) {
+		userRepository.addCourse(id, courseId);
+		return userRepository.getCourseId(id);
 	}
 
-//
-//	public void saveRecipe(@RequestBody Recipe recipe )
-//	{
-//		recipeRepository.save(recipe);
-//	}
-	
 	public void openUserListPage( )
 	{
 		

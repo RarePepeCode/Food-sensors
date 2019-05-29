@@ -1,3 +1,4 @@
+import { UserControllerService } from './user-controller.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -17,7 +18,7 @@ const httpOptions = {
 })
 export class CourseControllerService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userController: UserControllerService) { }
 
   searchCourses(): Observable<Array<Course>> {
     return this.http.get<Array<Course>>(courseUrl + 'searchCourses');
@@ -34,6 +35,10 @@ export class CourseControllerService {
   saveCourse(course : Course): Observable<{}> {
     console.log(course);
     return this.http.post((courseUrl + 'saveCourse'), course, httpOptions);
+  }
+
+  selectCourse(courseId: number):Observable<number> {
+    return this.userController.registerToCourse(courseId, 1);
   }
 
 }
