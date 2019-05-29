@@ -14,6 +14,11 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "update User u set u.fk_course_id = :courseId where u.id = :id", nativeQuery = true)
     void addCourse(@Param("id") Integer id, @Param("courseId") Integer courseId);
 
+    @Transactional
+    @Modifying
+    @Query(value = "update User u set u.fk_course_id = null where u.id = :id", nativeQuery = true)
+    void removeCourse(@Param("id") Integer id);
+
     @Query(value = "select u.fk_course_id from User u where u.id = :id", nativeQuery = true)
     Integer getCourseId(@Param("id") Integer id);
 

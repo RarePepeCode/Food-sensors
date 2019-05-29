@@ -14,4 +14,11 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
     @Query(value = "SELECT * FROM Recipe r WHERE r.fk_course_id = :id", nativeQuery = true)
     List<Recipe> getAllCoursesRecipes(@Param("id") Integer id);
+
+    @Query(value = "SELECT * FROM Recipe r WHERE r.fk_course_id = :courseId", nativeQuery = true)
+    List<Recipe> getCourseRecipes(@Param("courseId") String courseId);
+
+    @Query(value = "SELECT * FROM Recipe", nativeQuery = true)
+    List<Recipe> getAllRecipes();
+
 }
