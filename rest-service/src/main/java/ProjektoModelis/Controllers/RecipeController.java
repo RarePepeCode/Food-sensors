@@ -82,7 +82,8 @@ public class RecipeController
 	@RequestMapping(value = "/recipesForNewCourse", method = RequestMethod.GET)
 	public List<Recipe> getRecipesForNewCourse( )
 	{
-		return this.recipeRepository.findAll();
+		List<Recipe> allRecipes = this.recipeRepository.findAll();
+		return findRecipesWithoutCourses(allRecipes);
 	}
 
 	@RequestMapping(value = "/getAllNotCoursesRecipes/{id}", method = RequestMethod.GET)
@@ -142,5 +143,17 @@ public class RecipeController
 		}
 		return  filteredRecipes;
 	}
+
+	private List<Recipe> findRecipesWithoutCourses(List<Recipe> recipes)
+	{
+		List<Recipe> filteredRecipes = new ArrayList<Recipe>();
+		for(Recipe recipe : recipes)
+		{
+			if (recipe.getCourse() == null)
+				filteredRecipes.add(recipe);
+		}
+		return filteredRecipes;
+	}
+
 	
 }

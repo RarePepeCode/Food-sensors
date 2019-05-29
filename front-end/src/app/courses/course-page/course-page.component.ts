@@ -30,8 +30,6 @@ export class CoursePageComponent implements OnInit {
         console.log(this.course);
       }
     );
-
-    
   }
 
   submitCourse(){
@@ -56,7 +54,15 @@ export class CoursePageComponent implements OnInit {
   }
 
   registerToCourse(courseId: number) {
+<<<<<<< HEAD
     //this.courseController.selectCourse(courseId).subscribe();
     this.navigateBack();
+=======
+    this.courseController.selectCourse(courseId).subscribe(
+      (id: number) => {
+        console.log(id);
+      }
+    );
+>>>>>>> 600faae3be2e2850d930b84c7c2208bda461155c
   }
 }
