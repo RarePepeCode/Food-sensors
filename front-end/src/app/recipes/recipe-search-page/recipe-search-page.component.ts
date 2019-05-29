@@ -54,4 +54,8 @@ export class RecipeSearchPageComponent implements OnInit {
     }
   }
 
+  openCreateCourse() {
+    this.router.navigate(['create-recipe', this.isAdminTab])
+  }
+
 }

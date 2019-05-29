@@ -57,11 +57,16 @@ export class RecipePageComponent implements OnInit {
 
   editRecipe(){
     console.log("ciga");
-    this.recipeController.editRecipe(this.recipe).subscribe();    
+    this.recipeController.editRecipe(this.recipe).subscribe(); 
+    this.navigateBack();   
   }
 
   deleteRecipe(){
     this.recipeController.deleteRecipe(this.recipeId).subscribe();
+    this.navigateBack();
+  }
+
+  navigateBack() {
     if (this.isEditMode)
     {
       this.router.navigate(['admin']);
@@ -69,7 +74,6 @@ export class RecipePageComponent implements OnInit {
     else{
       this.router.navigate(['recipes']);
     }
-
   }
 
 }

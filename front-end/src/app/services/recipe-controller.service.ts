@@ -35,4 +35,9 @@ export class RecipeControllerService {
     return this.http.post((recipeUrl + 'saveRecipe'), course, httpOptions);
   }
 
+  saveRecipe(course : Recipe): Observable<{}> {
+    console.log(course);
+    return this.http.post((recipeUrl + 'saveRecipe'), course, httpOptions);
+  }
+
 }

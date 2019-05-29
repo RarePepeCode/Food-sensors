@@ -35,11 +35,16 @@ export class CoursePageComponent implements OnInit {
 
   submitCourse(){
     console.log("ciga");
-    this.courseController.saveCourse(this.course).subscribe();    
+    this.courseController.saveCourse(this.course).subscribe();
+    this.navigateBack();  
   }
 
   deleteCourse(){
     this.courseController.deleteCourse(this.courseID).subscribe();
+    this.navigateBack(); 
+  }
+
+  navigateBack() {
     if (this.isEditMode)
     {
       this.router.navigate(['admin']);
@@ -47,7 +52,6 @@ export class CoursePageComponent implements OnInit {
     else{
       this.router.navigate(['courses']);
     }
-
-  }   
+  }
 
 }

@@ -17,6 +17,7 @@ import { RecipesMainPageComponent } from './recipes/recipes-main-page/recipes-ma
 import { RecipePageComponent } from './recipes/recipe-page/recipe-page.component';
 import { CreateCourseComponent } from './courses/create-course/create-course.component';
 import { RecipesComponent } from './recipes/recipes.component';
+import { CreateRecipeComponent } from './recipes/create-recipe/create-recipe.component';
 
 
 const appRoutes: Routes = [
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'recipes', component: RecipesComponent },
   { path: 'recipes-search', component: RecipeSearchPageComponent },
   { path: 'recipe/:id/:edit', component: RecipePageComponent },
+  { path: 'create-recipe/:create',component: CreateRecipeComponent},
   { path: 'admin', component: AdminComponent },
   { path:  'main-page', component: MainPageComponent},
   { path:  '', component: MainPageComponent},
@@ -46,7 +48,8 @@ const appRoutes: Routes = [
     RecipesMainPageComponent,
     RecipePageComponent,
     CreateCourseComponent,
-    RecipesComponent
+    RecipesComponent,
+    CreateRecipeComponent
   ],
   imports: [
     BrowserModule,

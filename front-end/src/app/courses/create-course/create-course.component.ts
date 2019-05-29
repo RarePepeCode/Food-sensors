@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/models/course.model';
 import { CourseControllerService } from 'src/app/services/course-controller.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-course',
@@ -13,7 +13,7 @@ export class CreateCourseComponent implements OnInit {
   course : Course
   isCreate : boolean
 
-  constructor(private courseController: CourseControllerService, private route: ActivatedRoute) { }
+  constructor(private courseController: CourseControllerService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe( params => {
@@ -28,8 +28,16 @@ export class CreateCourseComponent implements OnInit {
   }
 
   submitData(){
-    console.log("cs");
-    this.courseController.saveCourse(this.course).subscribe();    
+    console.log(this.isCreate);
+    this.courseController.saveCourse(this.course).subscribe();
+    if (this.isCreate)
+    {
+      this.router.navigate(['admin']);
+    }
+    else{
+      this.router.navigate(['courses']);
+    }
+    
   }
 
 }
